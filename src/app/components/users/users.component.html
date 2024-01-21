@@ -1,0 +1,35 @@
+<h2>My user</h2>
+
+<div>
+  <label for="new-user">user name: </label>
+  <input id="new-user" #userName />
+
+  <button
+    type="button"
+    class="add-button"
+    (click)="
+      usersDisplayer.askUserCreation(userName.value).subscribe();
+      userName.value = ''
+    "
+  >
+    Add user
+  </button>
+</div>
+
+<ul class="user">
+  @for (user of usersDisplayer.users; track $index) {
+  <li>
+    <a routerLink="/detail/{{ user.id }}">
+      <span class="badge">{{ user.id }}</span> {{ user.name }}
+    </a>
+    <button
+      type="button"
+      class="delete"
+      title="delete user"
+      (click)="usersDisplayer.askUserDeletion(user).subscribe()"
+    >
+      x
+    </button>
+  </li>
+  }
+</ul>

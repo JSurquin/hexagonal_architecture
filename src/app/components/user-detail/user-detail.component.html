@@ -1,0 +1,21 @@
+<div *ngIf="userDetailDisplayer.user">
+  <h2>{{ userDetailDisplayer.user.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{ userDetailDisplayer.user.id }}</div>
+  <div>
+    <label for="user-name">User name: </label>
+    <input
+      #heroName
+      id="user-name"
+      [(ngModel)]="userDetailDisplayer.user.name"
+      placeholder="User name"
+    />
+  </div>
+  <button id="go-back-button" type="button" (click)="goBack()">go back</button>
+  <button
+    id="change-name-button"
+    type="button"
+    (click)="changeName(heroName.value)"
+  >
+    save
+  </button>
+</div>

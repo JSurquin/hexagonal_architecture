@@ -1,19 +1,24 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import IDisplayHeroes from 'src/app/domain/ports/i-display-heroes';
+import IDisplayUsers from '@/app/domain/ports/i-display-users';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { UserSearchComponent } from '../user-search/user-search.component';
+import IDisplayArticles from '@/app/domain/ports/i-display-articles';
 
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
+  imports: [CommonModule, RouterModule, UserSearchComponent],
   templateUrl: './dashboard.component.html',
-  styleUrls: [ './dashboard.component.css' ]
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-
   constructor(
-    @Inject('IDisplayHeroes') public heroesDisplayer: IDisplayHeroes
-  ) { }
+    @Inject('IDisplayUsers') public usersDisplayer: IDisplayUsers,
+    @Inject('IDisplayArticles') public articlesDisplayer: IDisplayArticles
+  ) {}
 
   ngOnInit(): void {
-    this.heroesDisplayer.askHeroesList().subscribe();
+    this.usersDisplayer.askUsersList().subscribe();
   }
-
 }

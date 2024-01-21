@@ -1,9 +1,25 @@
-<h2>Top Heroes</h2>
-<div class="heroes-menu">
-  <a *ngFor="let hero of heroesDisplayer.heroes.slice(0, 4)"
-      routerLink="/detail/{{hero.id}}">
-      {{hero.name}}
+<h2 class="text-3xl font-bold underline text-red-600">Top Users</h2>
+<div
+  class="max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+>
+  <!-- .slice(0, 4) -->
+  <a
+    *ngFor="let user of usersDisplayer.users"
+    routerLink="/detail/{{ user.id }}"
+  >
+    {{ user.name }}
   </a>
 </div>
+<div *ngIf="articlesDisplayer.Articles">
+  <h2>Top Articles</h2>
+  <div class="articles-menu">
+    <a
+      *ngFor="let article of articlesDisplayer.Articles.slice(0, 4)"
+      routerLink="/article/{{ article.id }}"
+    >
+      {{ article.title }}
+    </a>
+  </div>
+</div>
 
-<app-hero-search></app-hero-search>
+<app-user-search></app-user-search>

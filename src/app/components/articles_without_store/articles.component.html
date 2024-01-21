@@ -1,0 +1,8 @@
+<h2>Top Articles</h2>
+<div class="heroes-menu">
+  @if (articlesDisplayer.Articles) {
+  <p *ngFor="let article of articlesDisplayer.Articles.slice(0, 10)">
+    {{ article.title }}
+  </p>
+  }
+</div>
